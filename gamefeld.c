@@ -33,7 +33,7 @@ void addship(int player, int xkorS, int ykorS, int xkorE, int ykorE){
 		
 		int posS = (ykorS-1)*breite+xkorS;
 		int posE = (ykorE-1)*breite+xkorE;
-		*(p1_ship+p1_ships = posS;
+		*(p1_ship+p1_ships) = posS;
 		*(p1_ship+p1_ships+1) = posE;
 
 		p1_ships +=2;
