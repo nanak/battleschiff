@@ -8,6 +8,7 @@ int main(){
 	welcomeScreen();
 	scanf("%s",&test);
 	//load möglichkeit
+	//Eingabe, Spielfeldgröße & Schiffmenge
 	//score = start(param);
 	//if score = -1, abspeichern
 	//Todo: name
