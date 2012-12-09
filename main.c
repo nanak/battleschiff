@@ -4,10 +4,12 @@
 
 int main(){
 	char test[30];
-	int score;
+	int score[4];//Spieler 1 Schüsse, Spieler 1 Treffer, Spieler 2 Schüsse, Spieler 2 Treffer
 	welcomeScreen();
 	scanf("%s",&test);
+	//load möglichkeit
 	//score = start(param);
+	//if score = -1, abspeichern
 	//Todo: name
 	//save(score, name);
 
