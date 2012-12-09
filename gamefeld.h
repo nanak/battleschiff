@@ -10,11 +10,19 @@ extern int hoehe;
 extern int *p1_schoot[];
 extern int *p1_hit[];
 extern int *p1_schiffe[];
+//die zähler
+extern int p1_schootz;
+extern int p1_hitz;
+extern int p1_schiffez;
 
 //Player 2 informationen
 extern int *p2_schoot[];
 extern int *p2_hit[];
 extern int *p2_schiffe[];
+//die zähler
+extern int p2_schootz;
+extern int p2_hitz;
+extern int p2_schiffez;
 
 void initFeld(int , int);//festlegen der spielfeldgröße(breite , höhe)
 void schoot(int , int);//schießen (x,y kordi)
