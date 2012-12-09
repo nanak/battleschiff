@@ -6,37 +6,37 @@ int breite = 0;
 int hoehe = 0;
 
 //player 1 variablen
-int *p1_schoot[];
+int *p1_shot[];
 int *p1_hit[];
-int *p1_schiffe[];
+int *p1_ship[];
 // die zähler
-int p1_schootz = 0;
-int p1_hitz = 0;
-int p1_schiffez = 0;
+int p1_shots = 0;
+int p1_hits = 0;
+int p1_ships = 0;
 
 //PLayer 2 variablen
-int *p2_schoot[];
+int *p2_shot[];
 int *p2_hit[];
-int *p2_schiffe[];
+int *p2_ship[];
 // die zähler
-int p2_schootz = 0;
-int p2_hitz = 0;
-int p2_schiffez = 0;
+int p2_shots = 0;
+int p2_hits = 0;
+int p2_ships = 0;
 
 void initFeld(int breiten, int hoehen){
 	breite = breiten;
 	hoehe = hoehen;
 }
 // TODO schiffsspeicherung wie? 1. element start 2. element ende oda was)
-void addship(int player, int xkors, int ykors, int xkore, int ykore){
+void addship(int player, int xkorS, int ykorS, int xkorE, int ykorE){
 	if(player == 1){
 		
-		int posis = (ykors-1)*breite+xkors;
-		int posie = (ykore-1)*breite+xkore;
-		*(p1_schiffe+p1_schiffez) = posis;
-		*(p1_schiffe+p1_schiffez+1) = posie;
+		int posS = (ykorS-1)*breite+xkorS;
+		int posE = (ykorE-1)*breite+xkorE;
+		*(p1_ship+p1_ships = posS;
+		*(p1_ship+p1_ships+1) = posE;
 
-		p1_schiffez +=2;
+		p1_ships +=2;
 	}else {
 
 	}
