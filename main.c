@@ -12,6 +12,6 @@ int main(){
 	//if score = -1, abspeichern
 	//Todo: name
 	//save(score, name);
-
+	return 1;
 }  
 
