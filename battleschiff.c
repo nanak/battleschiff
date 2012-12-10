@@ -1,5 +1,6 @@
 #include "battleschiff.h"
-#include<stdio.h> 
+#include <stdio.h> 
+#include <stdint.h>
 //allgemeine Spielfeld infos
 int breite = 0;
 int hoehe = 0;
@@ -27,7 +28,7 @@ void start(int breiten, int hoehen, int ships){
 	hoehe = hoehen;
 	p1_ship[ships][4];
 	p2_ship[ships][4];
-	//Todo: Schiffesetzeneingabe aufrufen
+	//Todo: Schiffesetzeneingabe in Schleife aufrufen
 	//p1_ship[i][0]=(return & 255);
 	//p1_ship[i][1]=(return >>= 9);
 	//p1_ship[i][2]=(return & 255)+(~ return & 256)*length;
