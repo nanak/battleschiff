@@ -1,5 +1,6 @@
 #include<stdio.h> 
 #include "battleschiff.h"
+#include "gamefeld.h"
 
 
 int main(){
@@ -12,7 +13,7 @@ int main(){
 	//score = start(param);
 	//if score = -1, abspeichern
 	//Todo: name
-	//save(score, name);
+	//saveScore(score, name);
 	return 1;
 }  
 

@@ -6,18 +6,18 @@ int breite = 0;
 int hoehe = 0;
 
 //player 1 variablen
-int *p1_shot[];
-int *p1_hit[];
-int p1_ship[][];
+int32_t *p1_shot[];
+int32_t *p1_hit[];
+int p1_ship[][4];
 // die zähler
 int p1_shots = 0;
 int p1_hits = 0;
 int p1_ships = 0;
 
 //PLayer 2 variablen
-int *p2_shot[];
-int *p2_hit[];
-int p2_ship[][];
+int32_t *p2_shot[];
+int32_t *p2_hit[];
+int p2_ship[][4];
 // die zähler
 int p2_shots = 0;
 int p2_hits = 0;
@@ -26,8 +26,8 @@ int p2_ships = 0;
 void start(int breiten, int hoehen, int ships){
 	breite = breiten;
 	hoehe = hoehen;
-	p1_ship[ships][4];
-	p2_ship[ships][4];
+	p1_ship[ships];
+	p2_ship[ships];
 	//Todo: Schiffesetzeneingabe in Schleife aufrufen
 	//p1_ship[i][0]=(return & 255);
 	//p1_ship[i][1]=(return >>= 9);
