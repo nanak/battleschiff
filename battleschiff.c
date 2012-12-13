@@ -2,26 +2,26 @@
 #include <stdio.h> 
 #include <stdint.h>
 //allgemeine Spielfeld infos
-int breite = 0;
-int hoehe = 0;
+struct gameField
+{
+	int breite;
+	int hoehe;
+};
 
 //player 1 variablen
-int32_t *p1_shot[];
-int32_t *p1_hit[];
-int p1_ship[];
-// die zähler
-int p1_shots = 0;
-int p1_hits = 0;
-int p1_ships = 0;
-
-//PLayer 2 variablen
-int32_t *p2_shot[];
-int32_t *p2_hit[];
-int p2_ship[];
-// die zähler
-int p2_shots = 0;
-int p2_hits = 0;
-int p2_ships = 0;
+struct player{
+	int shot[];
+	int hit[];
+	ship ship[];
+};
+struct ship{
+	int x;
+	int y;
+	int length;
+	int hits;
+	bool richtung;
+	bool destroyed;
+}
 
 void start(int breiten, int hoehen, int ships, int32_t p1_shot[], int32_t p1_hit[], int p1_ship[], int32_t p2_shot[], int32_t p2_hit[], int p2_ships[]){
 	breite = breiten;
