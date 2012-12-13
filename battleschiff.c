@@ -23,7 +23,7 @@ int p2_shots = 0;
 int p2_hits = 0;
 int p2_ships = 0;
 
-void start(int breiten, int hoehen, int ships){
+void start(int breiten, int hoehen, int ships, int32_t p1_shot[], int32_t p1_hit[], int p1_ship[], int32_t p2_shot[], int32_t p2_hit[], int p2_ships[]){
 	breite = breiten;
 	hoehe = hoehen;
 	//p1_ship[ships];
@@ -49,6 +49,13 @@ void start(int breiten, int hoehen, int ships){
 //		}
 	//}
 
+}
+
+/*
+* 
+*/
+void beginn(){
+	
 }
 
 void save (){
