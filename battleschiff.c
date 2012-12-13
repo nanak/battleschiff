@@ -6,13 +6,18 @@ struct gameField
 {
 	int breite;
 	int hoehe;
+	int32_t a;
 };
-
+struct shot{
+	short x;
+	short y;
+};
 //player 1 variablen
 struct player{
-	int shot[];
-	int hit[];
-	ship ship[];
+	shot * shot;
+	shot hit;
+	ship * ship;
+	char * name;
 };
 struct ship{
 	int x;
@@ -23,9 +28,7 @@ struct ship{
 	bool destroyed;
 }
 
-void start(int breiten, int hoehen, int ships, int32_t p1_shot[], int32_t p1_hit[], int p1_ship[], int32_t p2_shot[], int32_t p2_hit[], int p2_ships[]){
-	breite = breiten;
-	hoehe = hoehen;
+void start(gameField g, player p1, player p2){
 	//p1_ship[ships];
 	//p2_ship[ships];
 	//Todo: Schiffesetzeneingabe in Schleife aufrufen
