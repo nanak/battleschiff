@@ -1,13 +1,31 @@
 #include "gamefeld.h"
+#include "battleschiff.h"
 #include <stdio.h> 
 #include <stdint.h>
 
 
 
 void welcomeScreen(){
-	printf("Battleschiff von Dominik Backhausen, Nanak Tattyrek und Thomas Traxler \nBitte neu fuer ein neues Spiel eingeben! \n");
-}
 
+}
+void setShip(ship * s){
+
+}
+void playerwechsel(){
+
+}
+void getShot(shot * s){
+
+}
+void getShipNumber(){
+
+}
+void getFeldSize(){
+
+}
+void drawFeld(gameField g, shot * hit, shot * noHit){
+
+}
 //int32_t setShip (int ShipÖLength){
 	//int32_t x=0, y=0, richtung = 0;
 	//Todo: x,y füllen ... Einlesen von position und richtung
