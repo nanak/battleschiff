@@ -1,32 +1,38 @@
 #include "battleschiff.h"
 #include <stdio.h> 
 #include <stdint.h>
-//allgemeine Spielfeld infos
-struct gameField
+#define bool int
+
+
+typedef struct gameFieldStruct
 {
 	int breite;
 	int hoehe;
-	int32_t a;
-};
-struct shot{
+}gameField;
+
+typedef struct shotStruct
+{
 	short x;
 	short y;
-};
-//player 1 variablen
-struct player{
-	char name;
-	shot* shots;
-	shot* hit;
-	ship* ships;
-};
-struct ship{
+}shot;
+
+typedef struct shipStruct{
 	int x;
 	int y;
 	int length;
 	int hits;
 	bool richtung;
-	bool destroy;
-};
+	bool destroyed;
+}ship;
+
+typedef struct playerStruct
+{
+	char name;
+	shot* shots;
+	shot* hit;
+	ship* ships;
+}player;
+
 
 void start (gameField g, player p1 , player p2) {
 	//p1_ship[ships];
@@ -65,6 +71,6 @@ void save (){
 
 }
 
-void load (){
+//void load (char[]){
 
-}
+//}
