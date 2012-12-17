@@ -14,10 +14,10 @@ struct shot{
 };
 //player 1 variablen
 struct player{
-	shot * shot;
-	shot hit;
-	ship * ship;
-	char * name;
+	char name;
+	shot* shots;
+	shot* hit;
+	ship* ships;
 };
 struct ship{
 	int x;
@@ -25,10 +25,10 @@ struct ship{
 	int length;
 	int hits;
 	bool richtung;
-	bool destroyed;
-}
+	bool destroy;
+};
 
-void start(gameField g, player p1, player p2){
+void start (gameField g, player p1 , player p2) {
 	//p1_ship[ships];
 	//p2_ship[ships];
 	//Todo: Schiffesetzeneingabe in Schleife aufrufen

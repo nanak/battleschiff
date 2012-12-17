@@ -3,26 +3,7 @@
 /*
 In battleschiff kommt der allgemeine ablauf des spieles sowie die funktionalität
 */
-//Allgemein spielfeld infos
-extern int breite;
-extern int hoehe;
-//Player 1 informationen
-extern int *p1_shot[];
-extern int *p1_hit[];
-extern int p1_ship[];
-//die zähler
-extern int p1_shots;
-extern int p1_hits;
-extern int p1_ships;
 
-//Player 2 informationen
-extern int *p2_shot[];
-extern int *p2_hit[];
-extern int p2_ship[];
-//die zähler
-extern int p2_shots;
-extern int p2_hits;
-extern int p2_ships;
 
 void initFeld(int , int);//festlegen der spielfeldgröße(breite , höhe)
 void shoot(int , int);//schießen (x,y kordi)
@@ -33,7 +14,7 @@ void load(char[]);
 // weitere funktionen fals notwendig
 
 
-void start();//startet das spiel
+void start(gameField g, player p1 , player p2);//startet das spiel
 //weiter funktioen falls notwendig
 
 
