@@ -4,34 +4,7 @@
 #define bool int
 
 
-typedef struct gameFieldStruct
-{
-	int breite;
-	int hoehe;
-}gameField;
 
-typedef struct shotStruct
-{
-	short x;
-	short y;
-}shot;
-
-typedef struct shipStruct{
-	int x;
-	int y;
-	int length;
-	int hits;
-	bool richtung;
-	bool destroyed;
-}ship;
-
-typedef struct playerStruct
-{
-	char name;
-	shot* shots;
-	shot* hit;
-	ship* ships;
-}player;
 
 
 void start (gameField g, player p1 , player p2) {

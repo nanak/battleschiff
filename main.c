@@ -1,6 +1,5 @@
 #include<stdio.h> 
 #include "battleschiff.h"
-#include "gamefeld.h"
 
 
 int main(){

@@ -3,34 +3,34 @@
 /*
 In battleschiff kommt der allgemeine ablauf des spieles sowie die funktionalit‰t
 */
-struct gameField
+typedef struct gameFieldStruct
 {
 	int breite;
 	int hoehe;
-};
+}gameField;
 
-struct shot
+typedef struct shotStruct
 {
 	short x;
 	short y;
-};
+}shot;
 
-struct ship{
+typedef struct shipStruct{
 	int x;
 	int y;
 	int length;
 	int hits;
 	int richtung;
 	int destroyed;
-};
+}ship;
 
-struct player
+typedef struct playerStruct
 {
 	char name;
-	struct shotStruct* shots;
-	struct shotStruct* hit;
-	struct shipStruct* ships;
-};
+	shot* shots;
+	shot* hit;
+	ship* ships;
+}player;
 
 /*
 Funktionenvorschlag
@@ -47,6 +47,13 @@ void start(gameField g, player p1 , player p2);//startet das spiel
 //weiter funktioen falls notwendig
 */
 
-
+//Gamefeld methoden
+void welcomeScreen();// gibt den welcomescreen aus
+void setShip(ship);//1 schiff setzen
+void playerwechsel();//wechselt den spieler
+void getShot(shot);//liest einen schuss ein
+int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
+void getFeldSize(gameField);//gibst du ein wie groﬂ spielfeld sein kann
+void drawFeld(gameField, shot, shot);//zeichnet spielfeld
 
 #endif /* battleschiff_H */
