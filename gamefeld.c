@@ -2,7 +2,7 @@
 #include <stdio.h> 
 #include <stdint.h>
 
-//Todo: battleschiff.h Aktualisieren
+//TODO battleschiff.h Aktualisieren
 
 void welcomeScreen(){
 	printf("Willkomen zu Battleschiff\nvon\nDominik Backhausen\nNanak Tattyrek\nThomas Traxler\n");
@@ -14,7 +14,15 @@ void setShip (ship s){
 	scanf("Bitte eine 0 für eine Vertikale ausrichtung\noder eine 1 für eine Horizontale ausrichtung eingeben: %d \n",s.richtung);
 }
 void playerwechsel(){
-	//TODO NANAK
+    //for(register int i = 0; i < 100; ++i)
+    //    printf("\n");
+    #ifdef LINUX
+    system("clear");
+    #elif defined(WIN32)
+    system("cls");
+    #endif
+
+    printf("Spieler %s ist am Zug.\n", "XY");
 }
 void getShot(shot e){
 	printf("Nun bitte die Kordinaten für den nächsten Schuss eingeben!");
