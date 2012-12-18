@@ -14,5 +14,4 @@ int main(){
 	//Todo: name
 	//saveScore(score, name);
 	return 1;
-}  
-
+}

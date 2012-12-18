@@ -31,7 +31,13 @@ void start (gameField g, player p1 , player p2) {
 //		}
 	//}
 
+
+
+
+
+
 }
+
 
 /*
 * 

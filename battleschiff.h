@@ -41,11 +41,14 @@ void genFeld(int);// gibt das aktuelle spielfeld aus sicht eines spielers aus (p
 void save();
 void load(char[]);
 // weitere funktionen fals notwendig
-
+*/
 
 void start(gameField g, player p1 , player p2);//startet das spiel
+void beginn();
+void save ();
+void load(char);
 //weiter funktioen falls notwendig
-*/
+
 
 //Gamefeld methoden
 void welcomeScreen();// gibt den welcomescreen aus
@@ -54,6 +57,6 @@ void playerwechsel();//wechselt den spieler
 void getShot(shot);//liest einen schuss ein
 int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
 void getFeldSize(gameField);//gibst du ein wie groﬂ spielfeld sein kann
-void drawFeld(gameField, shot, shot);//zeichnet spielfeld
+void drawFeld(gameField, shot, shot, shot,shot,ship);//zeichnet spielfeld(feld,aphit,apnohit,gphit,gpnohit,apships)
 
 #endif /* battleschiff_H */
