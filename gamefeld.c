@@ -5,15 +5,18 @@
 //TODO battleschiff.h Aktualisieren
 
 void welcomeScreen(){
-	printf("Willkomen zu Battleschiff\nvon\nDominik Backhausen\nNanak Tattyrek\nThomas Traxler\n\n Zum Spielstart s eingeben");
+	printf("Willkomen zu Battleschiff\nvon\nDominik Backhausen\nNanak Tattyrek\nThomas Traxler\n\n Zum Spielstart s eingeben\n");
 }
 
 
 void setShip (ship* s){
-	printf("Es wird ein Schiff mit %d Feldern gesetzt \n",(*s).length);
-	scanf("Bitte die x Kordinaten als Zahl eingeben: %d \n",(*s).x);
-	scanf("Bitte die y Kordinaten als Zahl eingeben: %d \n",(*s).y);
-	scanf("Bitte eine 0 für eine Vertikale ausrichtung\noder eine 1 für eine Horizontale ausrichtung eingeben: %d \n",(*s).richtung);
+	printf("Es wird ein Schiff mit %i Feldern gesetzt \n",&(*s).length);
+	printf("Bitte die x Kordinaten als Zahl eingeben: ");
+	scanf("%i",&(*s).x);
+	printf("Bitte die y Kordinaten als Zahl eingeben: ");
+	scanf("%i",&(*s).y);
+	printf("Bitte eine 0 für eine Vertikale ausrichtung\noder eine 1 für eine Horizontale ausrichtung eingeben: ");
+	scanf("%d",&(*s).richtung);
 }
 
 
@@ -33,23 +36,26 @@ void playerwechsel(){
 
 void getShot(shot* e){
 	printf("Nun bitte die Kordinaten für den nächsten Schuss eingeben!");
-	scanf("Bitte die x Kordinaten als Zahl eingeben: %d \n",(*e).x);
-	scanf("Bitte die y Kordinaten als Zahl eingeben: %d \n",(*e).y);
+	scanf("Bitte die x Kordinaten als Zahl eingeben: %d \n",&(*e).x);
+	scanf("Bitte die y Kordinaten als Zahl eingeben: %d \n",&(*e).y);
 }
 
 
 int getShipNumber(int max){
 	int re = 0;
 	printf("Bitte die anzahl der Schiffe pro Spieler eingeben (Maximal erlaubt: %d)\n",max);
-	scanf("%d \n",re);
+	scanf_s("%i",&re);
 	if(re > max | re <= 0) re = max;
 	return re;
 }
 
 
 void getGameField(gameField* g){
-	scanf("Bitte die Breite für das Spielfeld eingeben: %d \n",(*g).breite);
-	scanf("Bitte die Höhe für das Spielfeld eingeben: %d \n",(*g).hoehe);
+	printf("Bitte die Breite für das Spielfeld eingeben: ");
+	scanf("%d",&(*g).breite);
+	printf("\nBitte die Höhe für das Spielfeld eingeben: ");
+	scanf("%i",&(*g).hoehe);
+	//printf("\n");
 
 }
 
