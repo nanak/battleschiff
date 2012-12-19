@@ -4,18 +4,29 @@
 /*
 In battleschiff kommt der allgemeine ablauf des spieles sowie die funktionalität
 */
+
+/*
+gameFieldStruct speichert die größe des Spielfeld
+*/
 typedef struct gameFieldStruct
 {
 	int breite;
 	int hoehe;
 }gameField;
 
+/*
+shotStruct speichert die abgegebenen schüsse
+*/
 typedef struct shotStruct
 {
 	short x;
 	short y;
 }shot;
-
+/*
+shipStruct speichert die angabe der schiffe 
+sowie die anzahl die das schiff schon erhaltet hat
+und ob das schiff schon zerstört wurde
+*/
 typedef struct shipStruct{
 	int x;
 	int y;
@@ -24,7 +35,11 @@ typedef struct shipStruct{
 	int richtung;
 	int destroyed;
 }ship;
-
+/*
+playerStruct speichert den namen des spielers
+sowie sie abgegeben schüsse unterteilt in treffer an gegnerischen schiffen und treffer ins wasser
+es werden auch die eigenen schiffe gespeichert und die anzahl an abgegebenen schüsse wieder unterteilt intreffer und nichttreffer
+*/
 typedef struct playerStruct
 {
 	char name;
@@ -39,21 +54,11 @@ typedef struct playerStruct
 	int shipFields;
 }player;
 
-/*
-Funktionenvorschlag
-void initFeld(int , int);//festlegen der spielfeldgröße(breite , höhe)
-void shoot(int , int);//schießen (x,y kordi)
-void addShip(int, int, int, int,int);//ein schiff hinzufügen (spieler,x kor start , y kor start, x kor end, y kor end) 
-void genFeld(int);// gibt das aktuelle spielfeld aus sicht eines spielers aus (player)
-void save();
-void load(char[]);
-// weitere funktionen fals notwendig
-*/
-
+//Battleschiff methoden
 void start(gameField g, player p1 , player p2, int shiffzahl);//startet das spiel
-void beginn();
-void save ();
-void load(char);
+void beginn();//richtet das spiel ein
+void save ();//speichert das spiel ab
+void load(char);//laded ein spiel
 //weiter funktioen falls notwendig
 
 
@@ -64,8 +69,9 @@ void playerwechsel(player*);//wechselt den spieler
 void getShot(shot*);//liest einen schuss ein
 int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
 void getGameField(gameField*);//gibst du ein wie groß spielfeld sein kann
+char* getName(char[]);//liest den spielernamen von einem spieler ein
 void drawFeld(gameField, shot *, shot *,int , int);//zeichnet spielfeld(feld,aphit,apnohit,gphit,gpnohit,apships)
-void drawOwnFeld(gameField,shot*,shot*, ship*, int, int,int);
-void drawShipFeld(gameField,int*,int);
+void drawOwnFeld(gameField,shot*,shot*, ship*, int, int,int);// zeichnet das eigene spielfeld mit schiffen und schüssen vom gegner
+void drawShipFeld(gameField,int*,int);//zeichnet die eigene schiffsaufstelleung
 
 #endif /* battleschiff_H */
