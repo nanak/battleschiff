@@ -3,13 +3,19 @@
 
 //TODO battleschiff.h Aktualisieren
 
+/*
+Gibt den Willkommens Nachricht aus
+*/
 void welcomeScreen(){
 	printf("Willkomen zu Battleschiff\nvon\nDominik Backhausen\nNanak Tattyrek\nThomas Traxler\n\n Zum Spielstart s eingeben\n");
 }
 
-
+/*
+Diese Methode last den spieler eines seiner Schiffe setzen
+der spieler kann aber nicht die länge des schiffes angeben
+*/
 void setShip (ship* s){
-	printf("Es wird ein Schiff mit %i Feldern gesetzt \n",&(*s).length);
+	printf("Es wird ein Schiff mit %i Feldern gesetzt \n",(*s).length);
 	printf("Bitte die x Kordinaten als Zahl eingeben: ");
 	scanf("%i",&(*s).x);
 	printf("Bitte die y Kordinaten als Zahl eingeben: ");
@@ -18,7 +24,9 @@ void setShip (ship* s){
 	scanf("%d",&(*s).richtung);
 }
 
-
+/*
+Diese Methode wechselt den Spieler und gibt aus welcher spieler jetzt an der reihe ist
+*/
 void playerwechsel(player* p){
     int i;
     for(i = 0; i < 1024; ++i)
@@ -44,7 +52,9 @@ void getShot(shot* e){
 	printf("\n");
 }
 
-
+/*
+Liest die maximale anzahl an schiffen ein
+*/
 int getShipNumber(int max){
 	int re = 0;
 	printf("Bitte die anzahl der Schiffe pro Spieler eingeben (Maximal erlaubt: %d)\n",max);
@@ -53,7 +63,9 @@ int getShipNumber(int max){
 	return re;
 }
 
-
+/*
+liest die größe des spielfelds ein
+*/
 void getGameField(gameField* g){
 	printf("Bitte die Breite für das Spielfeld eingeben: ");
 	scanf("%d",&(*g).breite);
@@ -63,7 +75,20 @@ void getGameField(gameField* g){
 
 }
 
+/*
+Liest den Namen eines spielers ein
+*/
+char* getName(char spieler[]){
+	char re[40];
+	printf("Bitte den Namen von %s eingeben: ",spieler);
+	scanf("%s",re);
+	printf("\n");
+	return re;
+}
 
+/*
+Zeichnet ein spielfeld mit den von dir abgegebenen schüsse
+*/
 void drawFeld(gameField g,shot *aphit,shot *apnohit, int aHits, int aNoHits){
 	int indexnh = 0 , indexh = 0; 
 	int iii,i ,ind;
@@ -76,7 +101,7 @@ void drawFeld(gameField g,shot *aphit,shot *apnohit, int aHits, int aNoHits){
 	for(i = 1 ; i<= g.hoehe ; i++){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
-			if(indexh < aHits | indexnh < aNoHits ){
+			if(indexh < aHits || indexnh < aNoHits ){
 				if((*(aphit+indexh)).x == ind && (*(aphit+indexh)).y == i){
 					printf(" X |");
 					++indexh;
@@ -92,6 +117,10 @@ void drawFeld(gameField g,shot *aphit,shot *apnohit, int aHits, int aNoHits){
 		printf("\n");
 	}
 }
+
+/*
+Zeichnet das eigene Feld mit den eigenen schiffen und den schüssen vom gegner die aus die eigenen schiffe abgegben wurden
+*/
 void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, int aNoHits,int schiffe){
 	int indexnh = 0 , indexh = 0, indexs = 0;
 	int iii,i ,ind, news = 0;
@@ -104,7 +133,7 @@ void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, 
 	for(i = 1 ; i<= g.hoehe ; i++){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
-			if(indexh < aHits | indexnh < aNoHits | indexs < schiffe){
+			if(indexh < aHits || indexnh < aNoHits || indexs < schiffe){
 				if((*(aphit+indexh)).x == ind && (*(aphit+indexh)).y == i){
 					printf(" X |");
 					++indexh;
@@ -112,26 +141,8 @@ void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, 
 					printf(" O |");
 					++indexnh;
 
-				}else if((*(ships+indexs)).richtung == 1){
-					if((*(ships+indexs)).x+news == ind && (*(ships+indexs)).y == i){
-						printf(" $ |");
-						news ++;
-						if(news >= ((*(ships+indexs)).length)-1){
-							indexs++;
-							news = 0;
-						}
-					}
-
-				}else if((*(ships+indexs)).richtung == 0){
-					if((*(ships+indexs)).x == ind && (*(ships+indexs)).y+news == i){
-						printf(" $ |");
-						news ++;
-						if(news >= ((*(ships+indexs)).length)-1){
-							indexs++;
-							news = 0;
-						}
-					}
-				
+				}else if(ind<=(*ships).x*(*ships).length&ind>=(*ships).x*(*ships).length && i<=(*ships).y*abs((*ships).length-1) && i<=(*ships).y*abs((*ships).length-1)){
+					printf(" $ |");
 				}else 
 					printf(" _ |");
 			}else 
@@ -142,7 +153,9 @@ void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, 
 	}
 }
 
-
+/*
+Zeichnet ausschlieslich die position der eigenen schiffe ohne schüsse
+*/
 void drawShipFeld(gameField g,ship* ships,int schiffe){
 	int indexnh = 0 , indexh = 0, indexs = 0;
 	int iii,i ,ind, news = 0;
@@ -156,7 +169,7 @@ void drawShipFeld(gameField g,ship* ships,int schiffe){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
 			if(indexs < schiffe){
-				if(ind<=(*ships).x*(*ships).length&ind>=(*ships).x*(*ships).length&i<=(*ships).y*abs((*ships).length-1)&i<=(*ships).y*abs((*ships).length-1)){
+				if(ind<=(*ships).x*(*ships).length && ind>=(*ships).x*(*ships).length && i<=(*ships).y*abs((*ships).length-1) && i<=(*ships).y*abs((*ships).length-1)){
 					printf(" $ |");
 				}else 
 					printf(" _ |");
