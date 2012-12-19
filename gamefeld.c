@@ -20,7 +20,7 @@ void setShip (ship* s){
 }
 
 
-void playerwechsel(){
+void playerwechsel(player* p){
     int i;
     for(i = 0; i < 1024; ++i)
         printf("\n");
@@ -30,7 +30,7 @@ void playerwechsel(){
 //    system("cls");
 //    #endif
 
-    printf("Spieler %s ist am Zug.\n", "XY");
+    printf("Spieler %s ist am Zug.\n", (*p).name);
 }
 
 
@@ -72,7 +72,7 @@ void drawFeld(gameField g,shot *aphit,shot *apnohit, int aHits, int aNoHits){
 	for(i = 1 ; i<= g.hoehe ; i++){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
-			if(indexh < aHits){
+			if(indexh < aHits | indexnh < aNoHits ){
 				if((*(aphit+indexh)).x == ind && (*(aphit+indexh)).y == i){
 					printf(" X |");
 					++indexh;
@@ -88,9 +88,96 @@ void drawFeld(gameField g,shot *aphit,shot *apnohit, int aHits, int aNoHits){
 		printf("\n");
 	}
 }
-void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, int aNoHits,int shiffe){
+void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, int aNoHits,int schiffe){
+	int indexnh = 0 , indexh = 0, indexs = 0;
+	int iii,i ,ind, news = 0;
+	printf(" _ |");
+	for(iii = 0; iii < g.breite;iii++){
+		printf(" %d |",iii+1);
+	}
+	printf("\n");
+	
+	for(i = 1 ; i<= g.hoehe ; i++){
+		printf(" %d |",i);
+		for(ind = 1 ; ind<= g.breite ; ind++){
+			if(indexh < aHits | indexnh < aNoHits | indexs < schiffe){
+				if((*(aphit+indexh)).x == ind && (*(aphit+indexh)).y == i){
+					printf(" X |");
+					++indexh;
+				} else if ((*(apnohit+indexnh)).x == ind && (*(apnohit+indexnh)).y == i){
+					printf(" O |");
+					++indexnh;
 
+				}else if((*(ships+indexs)).richtung == 1){
+					if((*(ships+indexs)).x+news == ind && (*(apnohit+indexnh)).y == i){
+						printf(" $ |");
+						news ++;
+						if(news >= ((*(ships+indexs)).length)-1){
+							indexs++;
+							news = 0;
+						}
+					}
+
+				}else if((*(ships+indexs)).richtung == 1){
+					if((*(ships+indexs)).x == ind && (*(apnohit+indexnh)).y+news == i){
+						printf(" $ |");
+						news ++;
+						if(news >= ((*(ships+indexs)).length)-1){
+							indexs++;
+							news = 0;
+						}
+					}
+				
+				}else 
+					printf(" _ |");
+			}else 
+				printf(" _ |");
+
+		}
+		printf("\n");
+	}
 }
 
 
+void drawShipFeld(gameField g,ship* ships,int schiffe){
+	int indexnh = 0 , indexh = 0, indexs = 0;
+	int iii,i ,ind, news = 0;
+	printf(" _ |");
+	for(iii = 0; iii < g.breite;iii++){
+		printf(" %d |",iii+1);
+	}
+	printf("\n");
+	
+	for(i = 1 ; i<= g.hoehe ; i++){
+		printf(" %d |",i);
+		for(ind = 1 ; ind<= g.breite ; ind++){
+			if(indexs < schiffe){
+				if((*(ships+indexs)).richtung == 1){
+					if((*(ships+indexs)).x+news == ind && (*(ships+indexs)).y == i){
+						printf(" $ |");
+						news ++;
+						if(news >= ((*(ships+indexs)).length)-1){
+							indexs++;
+							news = 0;
+						}
+					}
 
+				}else if((*(ships+indexs)).richtung == 0){
+					if((*(ships+indexs)).x == ind && (*(ships+indexs)).y+news == i){
+						printf(" $ |");
+						news ++;
+						if(news >= ((*(ships+indexs)).length)-1){
+							indexs++;
+							news = 0;
+						}
+					}
+				
+				}else 
+					printf(" _ |");
+			}else 
+				printf(" _ |");
+
+		}
+		printf("\n");
+	}
+}
