@@ -18,13 +18,14 @@ void setShip (ship* s){
 
 
 void playerwechsel(){
-    //for(register int i = 0; i < 100; ++i)
-    //    printf("\n");
-    #ifdef LINUX
-    system("clear");
-    #elif defined(WIN)
-    system("cls");
-    #endif
+    int i;
+    for(i = 0; i < 1024; ++i)
+        printf("\n");
+//    #ifdef LINUX
+//    system("clear");
+//    #elif defined(WIN32)
+//    system("cls");
+//    #endif
 
     printf("Spieler %s ist am Zug.\n", "XY");
 }
