@@ -1,36 +1,38 @@
 #include "battleschiff.h"
 #include <stdio.h> 
 #include <stdint.h>
-#define bool int
+
 
 
 
 /*
 * Hier läuft das Spiel (und keiner weiß wohin)
 */
-void start (gameField g, player p1 , player p2) {
-	//p1_ship[ships];
-	//p2_ship[ships];
-	//Todo: Schiffesetzeneingabe in Schleife aufrufen
-	//p1_ship[i][0]=(return & 255);
-	//p1_ship[i][1]=(return >>= 9);
-	//p1_ship[i][2]=(return & 255)+(~ return & 256)*length;
-	//p1_ship[i][3]=(return >>= 9)+(~ return & 256)*length;
-	//usw.
+void start (gameField g, player p1 , player p2, int schiffzahl) {
+	int go,hits1,hits2,noHits1,noHits2,i,boolean;
+	shot *temp;
+	go=1;
 
-//	bool go = 1;
-//	while(go){
-		//P1 Spielfeld anzeigen
-		//P1 Schuss einlesen
+	while(go){
+		drawFeld(g,p1.hit,p1.shots,hits1,noHits1);
+		getShot(temp);
+		boolean=0;
+		for(i=0;i<schiffzahl & boolean==0;i++){
+			p2.ships+=i;
+			if((*temp).x<=(*p2.ships).x*(*p2.ships).length&(*temp).x>=(*p2.ships).x*(*p2.ships).length&(*temp).y<=(*p2.ships).y*abs((*p2.ships).length-1)&(*temp).y<=(*p2.ships).y*abs((*p2.ships).length-1)){
+
+			}
+			
+		}
 		//P1 Schuss verarbeiten
 		//P2 noch schiffe, ungetroffen?
-//		if(go){
+		if(go){
 			//P2 Spielfeld anzeigen
 			//P2 Schuss einlesen
 			//P2 Schuss verarbeiten
 			//P1 noch Schiffe vorhanden?
-//		}
-	//}
+		}
+	}
 
 
 
@@ -44,23 +46,65 @@ void start (gameField g, player p1 , player p2) {
 * Ließt alle Startwerte ein (Feldgröße, Shiffe etc.) und ruft start auf
 */
 void beginn(){
-	int (schiffzahl),max,i;
+	//Variablen
+	int schiffzahl,max,i,laenge;
 	gameField* g;
 	player p1,p2;
-	ship* ship1, ship2;
+	ship *ship1, *ship2;
+
 	g=(gameField*)malloc(sizeof(gameField));
+	//Spielfeld einlesen
 	getGameField(g);
+	//Maximale Schiffzahl
+	//TODO: Verbessern, Workaround for testing
 	max = (((*g).breite)/3)+1;
 	if (max > ((*g).hoehe)/3+1)
 		max = ((*g).hoehe)/3+1;
+	//Einlesen, tatsächliche Schiffzahl
 	schiffzahl = getShipNumber(max);
+
+	//Einlesen Spielernamen
+	p1.name = getName("Player 1");
+	p2.name = getName("Player 2");
+
+	//Maximale Länge
+	//TODO: Verbessern, Workaround for testing
+	laenge = 3;
+
+	//Setzen p1 ships
 	ship1 = (ship*)malloc(sizeof(ship)*schiffzahl);
-	for (i = 0;i<schiffzahl;i++){
-		(*ship1).length=schiffzahl;
+	for (i = 0;i<schiffzahl;i++){	
+		drawShipFeld(g,ship1,i+1); 
+		ship1 += i;
+		(*ship1).length=laenge;
 		setShip(ship1);
-		ship1++;
+		ship1 -= i;
 	}
-	scanf(" %d ",&i);
+	//Spielerwechsel
+	playerwechsel();
+	//Setzen p2 ships
+	ship2 = (ship*)malloc(sizeof(ship)*schiffzahl);
+	for (i = 0;i<schiffzahl;i++){	
+		drawShipFeld(g,ship2,i+1);
+		ship2 += i;
+		(*ship1).length=laenge;
+		setShip(ship2);
+		ship2 -= i;
+	}
+	//Übernehmen der Werte für die Spieler
+	p1.shots = (shot*) malloc(sizeof(shot)*(*g).breite*(*g).hoehe);
+	p2.shots = (shot*) malloc(sizeof(shot)*(*g).breite*(*g).hoehe);
+	p1.hit = (shot*) malloc(sizeof(shot)*schiffzahl*laenge);
+	p2.hit = (shot*) malloc(sizeof(shot)*schiffzahl*laenge);
+	p1.ships = ship1;
+	p2.ships = ship2;
+	p1.hits=0;
+	p2.hits=0;
+	p1.noHits=0;
+	p2.noHits=0;
+	//Starten des wirklichen Spiels und freigeben nicht mehr benötigter Speicher
+	start(*g,p1,p2,schiffzahl);
+	free(g);
 }
 /*
 * Speichert das ganze spiel ab

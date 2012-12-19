@@ -31,6 +31,8 @@ typedef struct playerStruct
 	shot* shots;
 	shot* hit;
 	ship* ships;
+	int hits;
+	int noHits;
 }player;
 
 /*
@@ -44,7 +46,7 @@ void load(char[]);
 // weitere funktionen fals notwendig
 */
 
-void start(gameField g, player p1 , player p2);//startet das spiel
+void start(gameField g, player p1 , player p2, int shiffzahl);//startet das spiel
 void beginn();
 void save ();
 void load(char);
