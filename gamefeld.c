@@ -37,14 +37,14 @@ void playerwechsel(char* p){
 //    system("cls");
 //    #endif
 
-    printf_s("Spieler %s ist am Zug.\n", p);
+    printf("Spieler %s ist am Zug.\n", p);
 }
 
 /*
  * Liest Koordinaten fuer Schuesse ein
  */
 void getShot(shot* e){
-	printf("Nun bitte die Kordinaten für den nächsten Schuss eingeben!");
+	printf("Nun bitte die Kordinaten für den naechsten Schuss eingeben!");
 	printf("\nBitte die x Kordinaten als Zahl eingeben: ");
 	scanf("%d",&(*e).x);
 	printf("\nBitte die y Kordinaten als Zahl eingeben: ");
@@ -58,7 +58,7 @@ Liest die maximale anzahl an schiffen ein
 int getShipNumber(int max){
 	int re = 0;
 	printf("Bitte die anzahl der Schiffe pro Spieler eingeben (Maximal erlaubt: %d)\n",max);
-	scanf_s("%i",&re);
+	scanf("%i",&re);
 	if(re > max | re <= 0) re = max;
 	return re;
 }
@@ -67,9 +67,9 @@ int getShipNumber(int max){
 liest die größe des spielfelds ein
 */
 void getGameField(gameField* g){
-	printf("Bitte die Breite für das Spielfeld eingeben: ");
+	printf("Bitte die Breite fuer das Spielfeld eingeben: ");
 	scanf("%d",&(*g).breite);
-	printf("\nBitte die Höhe für das Spielfeld eingeben: ");
+	printf("\nBitte die Hoehe fuer das Spielfeld eingeben: ");
 	scanf("%i",&(*g).hoehe);
 	//printf("\n");
 
