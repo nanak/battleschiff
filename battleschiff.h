@@ -1,5 +1,6 @@
 #ifndef battleschiff_H
 #define battleschiff_H
+#include<stdlib.h>
 /*
 In battleschiff kommt der allgemeine ablauf des spieles sowie die funktionalit‰t
 */
@@ -52,11 +53,11 @@ void load(char);
 
 //Gamefeld methoden
 void welcomeScreen();// gibt den welcomescreen aus
-void setShip(ship);//1 schiff setzen
+void setShip(ship*);//1 schiff setzen
 void playerwechsel();//wechselt den spieler
-void getShot(shot);//liest einen schuss ein
+void getShot(shot*);//liest einen schuss ein
 int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
-void getFeldSize(gameField);//gibst du ein wie groﬂ spielfeld sein kann
+void getGameField(gameField*);//gibst du ein wie groﬂ spielfeld sein kann
 void drawFeld(gameField, shot *, shot *,int , int, shot *,shot *,ship *);//zeichnet spielfeld(feld,aphit,apnohit,gphit,gpnohit,apships)
 
 #endif /* battleschiff_H */

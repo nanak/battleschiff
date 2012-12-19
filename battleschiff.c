@@ -5,8 +5,9 @@
 
 
 
-
-
+/*
+* Hier läuft das Spiel (und keiner weiß wohin)
+*/
 void start (gameField g, player p1 , player p2) {
 	//p1_ship[ships];
 	//p2_ship[ships];
@@ -40,16 +41,35 @@ void start (gameField g, player p1 , player p2) {
 
 
 /*
-* 
+* Ließt alle Startwerte ein (Feldgröße, Shiffe etc.) und ruft start auf
 */
 void beginn(){
-	
-}
+	int schiffzahl,max,i;
+	gameField* g;
+	player p1,p2;
+	ship* ship1, ship2;
+	g=(gameField*)malloc(sizeof(gameField));
+	getGameField(g);
+	max = ((*g).breite)/3;
+	if (max > ((*g).hoehe)/3)
+		max = ((*g).hoehe)/3;
+	schiffzahl = getShipNumber(max);
+	ship1 = (ship*)malloc(sizeof(ship)*schiffzahl);
+	for (i = 0;i<schiffzahl;i++,ship1++){
+		(*ship1).length=schiffzahl % (i+1);
+		setShip(ship1);
+	}
 
+}
+/*
+* Speichert das ganze spiel ab
+*/
 void save (){
 
 }
-
+/*
+* Lädt das Spiel und startet die start
+*/
 //void load (char[]){
 
 //}
