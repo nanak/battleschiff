@@ -1,6 +1,5 @@
 #include "battleschiff.h"
 #include <stdio.h> 
-#include <stdint.h>
 
 //TODO battleschiff.h Aktualisieren
 
@@ -33,11 +32,16 @@ void playerwechsel(player* p){
     printf("Spieler %s ist am Zug.\n", (*p).name);
 }
 
-
+/*
+ * Liest Koordinaten fuer Schuesse ein
+ */
 void getShot(shot* e){
 	printf("Nun bitte die Kordinaten für den nächsten Schuss eingeben!");
-	scanf("Bitte die x Kordinaten als Zahl eingeben: %d \n",&(*e).x);
-	scanf("Bitte die y Kordinaten als Zahl eingeben: %d \n",&(*e).y);
+	printf("\nBitte die x Kordinaten als Zahl eingeben: ");
+	scanf("%d",&(*e).x);
+	printf("\nBitte die y Kordinaten als Zahl eingeben: ");
+	scanf("%d",&(*e).y);
+	printf("\n");
 }
 
 
