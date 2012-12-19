@@ -57,6 +57,6 @@ void playerwechsel();//wechselt den spieler
 void getShot(shot);//liest einen schuss ein
 int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
 void getFeldSize(gameField);//gibst du ein wie groﬂ spielfeld sein kann
-void drawFeld(gameField, shot, shot, shot,shot,ship);//zeichnet spielfeld(feld,aphit,apnohit,gphit,gpnohit,apships)
+void drawFeld(gameField, shot *, shot *, shot *,shot *,ship *);//zeichnet spielfeld(feld,aphit,apnohit,gphit,gpnohit,apships)
 
 #endif /* battleschiff_H */

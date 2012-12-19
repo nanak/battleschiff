@@ -6,6 +6,7 @@ int main(){
 	char test[30];
 	int score[4];//Spieler 1 Schüsse, Spieler 1 Treffer, Spieler 2 Schüsse, Spieler 2 Treffer
 	welcomeScreen();
+	playerwechsel();
 	scanf("%s",&test);
 	//load möglichkeit
 	//Eingabe, Spielfeldgröße & Schiffmenge
