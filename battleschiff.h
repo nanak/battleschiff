@@ -33,6 +33,10 @@ typedef struct playerStruct
 	ship* ships;
 	int hits;
 	int noHits;
+	int* orderedShots;
+	int* orderedHits;
+	int* orderedShips;
+	int shipFields;
 }player;
 
 /*
@@ -62,6 +66,6 @@ int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
 void getGameField(gameField*);//gibst du ein wie groﬂ spielfeld sein kann
 void drawFeld(gameField, shot *, shot *,int , int);//zeichnet spielfeld(feld,aphit,apnohit,gphit,gpnohit,apships)
 void drawOwnFeld(gameField,shot*,shot*, ship*, int, int,int);
-void drawShipFeld(gameField,ship*,int);
+void drawShipFeld(gameField,int*,int);
 
 #endif /* battleschiff_H */

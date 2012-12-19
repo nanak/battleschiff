@@ -9,21 +9,45 @@
 * Hier l‰uft das Spiel (und keiner weiﬂ wohin)
 */
 void start (gameField g, player p1 , player p2, int schiffzahl) {
-	int go,hits1,hits2,noHits1,noHits2,i,boolean;
+	int go,i,ii,boolean,help,h2;
 	shot *temp;
 	go=1;
-
+	temp=(shot*)malloc(sizeof(shot));
 	while(go){
-		drawFeld(g,p1.hit,p1.shots,hits1,noHits1);
+		drawFeld(g,p1.hit,p1.shots,p1.hits,p1.noHits);
 		getShot(temp);
 		boolean=0;
-		for(i=0;i<schiffzahl & boolean==0;i++){
-			p2.ships+=i;
-			if((*temp).x<=(*p2.ships).x*(*p2.ships).length&(*temp).x>=(*p2.ships).x*(*p2.ships).length&(*temp).y<=(*p2.ships).y*abs((*p2.ships).length-1)&(*temp).y<=(*p2.ships).y*abs((*p2.ships).length-1)){
+		help=(*temp).y*g.breite+(*temp).x;
+		for(i=0;i<p1.shipFields & boolean==0;i++){//Alle schiffsfelder durchgehen
 
+			if(*(p1.orderedShips+i)==help){//Wenn Treffer entdeckt
+				for(ii=0;ii<p1.hits;ii++){//In Trefferliste einordnen
+					if(*(p1.orderedHits+ii)>help){
+						h2=*(p1.orderedHits+ii);
+						*(p1.orderedHits+ii)=help;
+						help=h2;
+					}
+				}
+				*(p1.orderedHits+p1.hits)=help;
+				boolean=1;
+				++p1.hits;
 			}
-			
 		}
+		if(boolean=0){//Wenn kein Treffer
+			for(ii=0;ii<p1.hits;ii++){//In Nichttrefferliste einordnen
+					if(*(p1.orderedShots+ii)>help){
+						h2=*(p1.orderedShots+ii);
+						*(p1.orderedShots+ii)=help;
+						help=h2;
+					}
+				}
+				*(p1.orderedShots+p1.noHits)=help;
+				++p1.noHits;
+		}else
+			boolean=0;
+		
+			
+		
 		//P1 Schuss verarbeiten
 		//P2 noch schiffe, ungetroffen?
 		if(go){
@@ -38,7 +62,13 @@ void start (gameField g, player p1 , player p2, int schiffzahl) {
 
 
 
-
+	free(temp);
+	free(p1.ships);
+	free(p1.shots);
+	free(p1.hit);
+	free(p2.ships);
+	free(p2.shots);
+	free(p2.hit);
 }
 
 
@@ -47,7 +77,7 @@ void start (gameField g, player p1 , player p2, int schiffzahl) {
 */
 void beginn(){
 	//Variablen
-	int schiffzahl,max,i,laenge;
+	int schiffzahl,max,i,ii,iii,laenge,help,h2;
 	gameField* g;
 	player p1,p2;
 	ship *ship1, *ship2;
@@ -73,23 +103,38 @@ void beginn(){
 
 	//Setzen p1 ships
 	ship1 = (ship*)malloc(sizeof(ship)*schiffzahl);
-	for (i = 0;i<schiffzahl;i++){	
-		drawShipFeld(g,ship1,i+1); 
-		ship1 += i;
-		(*ship1).length=laenge;
-		setShip(ship1);
-		ship1 -= i;
+	p1.orderedShips = (int*) malloc(sizeof(int)*schiffzahl*laenge);
+	p1.shipFields=0;
+	for (i = 0;i<schiffzahl;i++){	//f¸r jedes Schiff etwas herausholen i = Anzahl der abgearbeiteten Schiffe
+		drawShipFeld(*g,p1.orderedShips,i+1); //Feld zeichnen
+		//laenge setzen
+		(*(ship1+i)).length=laenge;
+		//Schiff einlesen
+		setShip(ship1+i);
+		//Schiff in geordnete liste setzen
+		for(ii=0;ii<laenge;ii++){//Jedes Feld des Schiffes durchgehen, ii = Position im Schiff
+			help=(((*g).breite*((*(ship1+i)).y+ii)*(*(ship1+i)).richtung)+(*(ship1+i)).x);//Position des Feldes = y*breite+x
+			for(iii=0;iii<p1.shipFields;iii++){//Geordnete Liste durchgehen, iii= Position in der Liste
+				if(*(p1.orderedShips+iii)>help){
+					h2=*(p1.orderedShips+iii);
+					*(p1.orderedShips+iii)=help;
+					help=h2;
+				}
+			}
+			*(p1.orderedShips+p1.shipFields)=help;
+			++p1.shipFields;
+		}
 	}
+	
 	//Spielerwechsel
 	playerwechsel(&p2);
 	//Setzen p2 ships
 	ship2 = (ship*)malloc(sizeof(ship)*schiffzahl);
 	for (i = 0;i<schiffzahl;i++){	
-		drawShipFeld(g,ship2,i+1);
-		ship2 += i;
-		(*ship1).length=laenge;
-		setShip(ship2);
-		ship2 -= i;
+		drawShipFeld(*g,ship2,i+1);
+		(*(ship2+i)).length=laenge;
+		setShip(ship2+i);
+
 	}
 	//‹bernehmen der Werte f¸r die Spieler
 	p1.shots = (shot*) malloc(sizeof(shot)*(*g).breite*(*g).hoehe);

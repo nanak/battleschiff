@@ -143,7 +143,7 @@ void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, 
 }
 
 
-void drawShipFeld(gameField g,ship* ships,int schiffe){
+void drawShipFeld(gameField g,int* orderedShips,int schiffe){
 	int indexnh = 0 , indexh = 0, indexs = 0;
 	int iii,i ,ind, news = 0;
 	printf(" _ |");
@@ -156,8 +156,9 @@ void drawShipFeld(gameField g,ship* ships,int schiffe){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
 			if(indexs < schiffe){
-				if(ind<=(*ships).x*(*ships).length&ind>=(*ships).x*(*ships).length&i<=(*ships).y*abs((*ships).length-1)&i<=(*ships).y*abs((*ships).length-1)){
+				if(*(orderedShips+indexs)=(i-1)*g.breite+ind){
 					printf(" $ |");
+					++indexs;
 				}else 
 					printf(" _ |");
 			}else 
