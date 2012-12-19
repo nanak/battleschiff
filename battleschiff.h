@@ -42,7 +42,7 @@ es werden auch die eigenen schiffe gespeichert und die anzahl an abgegebenen sch
 */
 typedef struct playerStruct
 {
-	char name;
+	char* name;
 	shot* shots;
 	shot* hit;
 	ship* ships;
@@ -65,7 +65,7 @@ void load(char);//laded ein spiel
 //Gamefeld methoden
 void welcomeScreen();// gibt den welcomescreen aus
 void setShip(ship*);//1 schiff setzen
-void playerwechsel(player*);//wechselt den spieler
+void playerwechsel(char*);//wechselt den spieler
 void getShot(shot*);//liest einen schuss ein
 int getShipNumber(int);//eingabe der schiffsanzahl im spiel (max wert berechnen)
 void getGameField(gameField*);//gibst du ein wie groﬂ spielfeld sein kann

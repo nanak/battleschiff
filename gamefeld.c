@@ -27,7 +27,7 @@ void setShip (ship* s){
 /*
 Diese Methode wechselt den Spieler und gibt aus welcher spieler jetzt an der reihe ist
 */
-void playerwechsel(player* p){
+void playerwechsel(char* p){
     int i;
     for(i = 0; i < 1024; ++i)
         printf("\n");
@@ -37,7 +37,7 @@ void playerwechsel(player* p){
 //    system("cls");
 //    #endif
 
-    printf("Spieler %s ist am Zug.\n", (*p).name);
+    printf_s("Spieler %s ist am Zug.\n", p);
 }
 
 /*
@@ -79,7 +79,8 @@ void getGameField(gameField* g){
 Liest den Namen eines spielers ein
 */
 char* getName(char spieler[]){
-	char re[40];
+	char *re;
+	re=(char*)malloc(sizeof(char)*30);
 	printf("Bitte den Namen von %s eingeben: ",spieler);
 	scanf("%s",re);
 	printf("\n");
@@ -167,7 +168,7 @@ void drawShipFeld(gameField g,int* orderedShips,int schiffe){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
 			if(indexs < schiffe){
-				if(*(orderedShips+indexs)=(i-1)*g.breite+ind){
+				if(*(orderedShips+indexs)==(i-1)*g.breite+ind){
 					printf(" $ |");
 					++indexs;
 				}else 
