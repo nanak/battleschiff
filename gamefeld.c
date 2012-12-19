@@ -39,7 +39,7 @@ void getFeldSize(gameField g){
 	scanf("Bitte die Breite für das Spielfeld eingeben: %d \n",g.breite);
 	scanf("Bitte die Höhe für das Spielfeld eingeben: %d \n",g.hoehe);
 }
-void drawFeld(gameField g,shot *aphit,shot *apnohit,shot *gphit,shot *gpnohit, ship *apships){
+void drawFeld(gameField g,shot *aphit,shot *apnohit, int aHits, int aNoHits, shot *gphit,shot *gpnohit, ship *apships){
 	int indexnh = 0 , indexh = 0; 
 	int iii,i ,ind;
 	printf(" _ |");
@@ -49,7 +49,7 @@ void drawFeld(gameField g,shot *aphit,shot *apnohit,shot *gphit,shot *gpnohit, s
 	printf("\n");
 
 	for(i = 1 ; i<= g.hoehe ; i++){
-		printf(" %d |",i+1);
+		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
 
 			if(i == aphit[indexh].y && ind == aphit[indexh].x){
