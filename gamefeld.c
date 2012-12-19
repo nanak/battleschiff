@@ -109,7 +109,7 @@ void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, 
 					++indexnh;
 
 				}else if((*(ships+indexs)).richtung == 1){
-					if((*(ships+indexs)).x+news == ind && (*(apnohit+indexnh)).y == i){
+					if((*(ships+indexs)).x+news == ind && (*(ships+indexs)).y == i){
 						printf(" $ |");
 						news ++;
 						if(news >= ((*(ships+indexs)).length)-1){
@@ -118,8 +118,8 @@ void drawOwnFeld(gameField g,shot *aphit,shot *apnohit, ship *ships, int aHits, 
 						}
 					}
 
-				}else if((*(ships+indexs)).richtung == 1){
-					if((*(ships+indexs)).x == ind && (*(apnohit+indexnh)).y+news == i){
+				}else if((*(ships+indexs)).richtung == 0){
+					if((*(ships+indexs)).x == ind && (*(ships+indexs)).y+news == i){
 						printf(" $ |");
 						news ++;
 						if(news >= ((*(ships+indexs)).length)-1){
