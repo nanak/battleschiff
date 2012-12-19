@@ -156,26 +156,8 @@ void drawShipFeld(gameField g,ship* ships,int schiffe){
 		printf(" %d |",i);
 		for(ind = 1 ; ind<= g.breite ; ind++){
 			if(indexs < schiffe){
-				if((*(ships+indexs)).richtung == 1){
-					if((*(ships+indexs)).x+news == ind && (*(ships+indexs)).y == i){
-						printf(" $ |");
-						news ++;
-						if(news >= ((*(ships+indexs)).length)-1){
-							indexs++;
-							news = 0;
-						}
-					}
-
-				}else if((*(ships+indexs)).richtung == 0){
-					if((*(ships+indexs)).x == ind && (*(ships+indexs)).y+news == i){
-						printf(" $ |");
-						news ++;
-						if(news >= ((*(ships+indexs)).length)-1){
-							indexs++;
-							news = 0;
-						}
-					}
-				
+				if(ind<=(*ships).x*(*ships).length&ind>=(*ships).x*(*ships).length&i<=(*ships).y*abs((*ships).length-1)&i<=(*ships).y*abs((*ships).length-1)){
+					printf(" $ |");
 				}else 
 					printf(" _ |");
 			}else 

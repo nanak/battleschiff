@@ -81,7 +81,7 @@ void beginn(){
 		ship1 -= i;
 	}
 	//Spielerwechsel
-	playerwechsel();
+	playerwechsel(&p2);
 	//Setzen p2 ships
 	ship2 = (ship*)malloc(sizeof(ship)*schiffzahl);
 	for (i = 0;i<schiffzahl;i++){	
